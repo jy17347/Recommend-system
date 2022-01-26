@@ -89,7 +89,6 @@ while cap.isOpened():
         if action_seq[-1] == action_seq[-2] == action_seq[-3]:
             this_action = action
 
-        print(locVector[16])
         cv2.putText(img, f'{this_action.upper()}', org=(int(res.landmark[12].x * img.shape[1]), int(res.landmark[12].y * img.shape[0] + 20)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
 
     cv2.imshow('img', img)
