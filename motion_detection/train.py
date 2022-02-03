@@ -41,6 +41,7 @@ x_train, x_val, y_train, y_val = train_test_split(x_data, y_data, test_size=0.1,
 print(x_train.shape, y_train.shape)
 print(x_val.shape, y_val.shape)
 
+
 model = Sequential([
     LSTM(64, activation='relu',return_sequences=True, input_shape=x_train.shape[1:3]),
     LSTM(128, activation='relu',return_sequences=True,),
