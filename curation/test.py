@@ -15,8 +15,8 @@ for i in priority:
     y_pred = model.predict(input_data).squeeze()
     i_pred = int(np.argmax(y_pred))
     actions = action_list[i_pred]
-    """if actions in recommend_list:
-        continue"""
+    if actions in recommend_list:
+        continue
     recommend_list.append(actions)
     
 print(recommend_list)
