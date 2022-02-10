@@ -27,9 +27,9 @@ for idx, action in enumerate(actions):
       
     for frame in os.listdir(action_dir):
         
-        img = cv2.flip(img, 1)
         img = action_dir + '/' + frame
         img = cv2.imread(img, cv2.IMREAD_COLOR)
+        img = cv2.flip(img, 1)
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         result = pose.process(img_rgb)          # 프레임을 읽어 Mediapipe에 넣어준다.
 
