@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 
 action_list = np.load('action_list/action_list.npy')
 model = load_model('models/curation_model.h5')
-priority = list(range(1, 70, 5))
+priority = list(range(1, 400))
 recommend_list = []
 actions = []
 
@@ -18,5 +18,8 @@ for i in priority:
     if actions in recommend_list:
         continue
     recommend_list.append(actions)
+    if len(recommend_list) > 4:
+        break
+
     
 print(recommend_list)
