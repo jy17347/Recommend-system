@@ -14,7 +14,7 @@ class person:
         print(self.age)
 
     
-def get_bodyInfo():
+def input_bodyInfo():
     name = input("이름: ")
     height = int(input("키: "))
     weight = int(input("몸무게: "))
