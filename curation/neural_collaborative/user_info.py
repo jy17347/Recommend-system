@@ -1,3 +1,4 @@
+import numpy as np
 class person:
     def __init__(self, name, height, weight, sex, age):
         self.name = name
@@ -13,7 +14,11 @@ class person:
         print(self.sex)
         print(self.age)
 
-    
+    def user_input(self):
+        result = np.array([(self.height-170)/30, (self.weight-70)/30, self.sex, (self.age-30)/20,22, 4])
+        result = result[np.newaxis,:]
+        return result
+
 def input_bodyInfo():
     name = input("이름: ")
     height = int(input("키: "))

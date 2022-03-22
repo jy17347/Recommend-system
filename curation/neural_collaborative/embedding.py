@@ -22,6 +22,7 @@ def embedding_model(num_users, num_items, layers=[32,64,32,16], reg_layers=[0]):
     mf_vector = Multiply()([mf_user_latent, mf_item_latent])
     mf_vector = (mf_vector)
 
+    print(mf_vector)
     #MLP part
     mlp_user_latent = (user_input)
     mlp_item_latent = Flatten()(MLP_embedding_item(item_input))
