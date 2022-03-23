@@ -17,8 +17,9 @@ weight = 78
 height = 181
 sex = 1
 age = 26
+ability = 4
 # name, height, weight, sex, age = input_bodyInfo
-newbie = person(name, height, weight, sex, age)
+newbie = person(name, height, weight, sex, age, ability)
 newbie.check()
 print(newbie.profile())
 newbie_input = scaler_user(newbie.profile())

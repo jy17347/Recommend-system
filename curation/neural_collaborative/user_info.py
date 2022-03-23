@@ -1,13 +1,13 @@
 import numpy as np
 class person:
-    def __init__(self, name, height, weight, sex, age):
+    def __init__(self, name, height, weight, sex, age, ability):
         self.name = name
         self.height = height
         self.weight = weight
         self.sex = sex
         self.age = age
         self.bmi = weight/(height*0.01)**2
-        self.ability = 4
+        self.ability = ability
     
     def check(self):
         print(self.name, self.height, self.weight, self.sex, self.age, self.bmi, self.ability)
