@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import numpy as np
 
@@ -29,7 +28,7 @@ def get_trainset(user_profile, exercise, labeling):
 
 
 def scaler_user(user_dataset):
-    
+
     user_dataset = user_dataset[:,1:].astype(np.float64)
     user_dataset[:,0] = (user_dataset[:,0]-170)/30
     user_dataset[:,1] = (user_dataset[:,1]-70)/30

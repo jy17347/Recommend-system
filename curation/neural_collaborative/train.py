@@ -29,7 +29,7 @@ plot_model(model, show_shapes=True)
 
 model.compile(optimizer='adam', loss='mse', metrics=[tf.keras.metrics.Precision()])
 history = model.fit([user_train_input, chest_train_input],chest_label, epochs=300)
-model.save('model/curation_model.h5')
+model.save('model/chest_model.h5')
 
 
 pd.Series(history.history['loss']).plot(logy=True)

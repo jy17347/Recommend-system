@@ -23,7 +23,7 @@ def input_bodyInfo():
     height = int(input("키: "))
     weight = int(input("몸무게: "))
     sex_str = input("성별 (남, 여): ")
-    sex = 1 if sex_str == "남" else 0
+    sex = 1 if sex_str == "남" or 1 else 0
     age = int(input("나이: "))
     
     return name, height, weight, sex, age
