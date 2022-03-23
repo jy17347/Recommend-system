@@ -6,18 +6,17 @@ class person:
         self.weight = weight
         self.sex = sex
         self.age = age
+        self.bmi = weight/(height*0.01)**2
+        self.ability = 4
     
     def check(self):
-        print(self.name)
-        print(self.height)
-        print(self.weight)
-        print(self.sex)
-        print(self.age)
+        print(self.name, self.height, self.weight, self.sex, self.age, self.bmi, self.ability)
 
-    def user_input(self):
-        result = np.array([(self.height-170)/30, (self.weight-70)/30, self.sex, (self.age-30)/20,22, 4])
+    def profile(self):
+        result = np.array([self.name, self.height, self.weight, self.sex, self.age, self.bmi, self.ability])
         result = result[np.newaxis,:]
         return result
+
 
 def input_bodyInfo():
     name = input("이름: ")

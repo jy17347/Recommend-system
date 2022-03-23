@@ -2,22 +2,19 @@ import os
 import pandas as pd
 import numpy as np
 
-def load_numpy_dataset(data):
+def load_dataset(data):
     dataset_dir = "C:/project/dataset/kwix/curation"
     loaded_dataset = pd.read_csv(dataset_dir +'/' + data + '.csv')
     
     if data == 'user':
-        loaded_dataset.iloc[:,1] = (loaded_dataset.iloc[:,1]-170)/30
-        loaded_dataset.iloc[:,2] = (loaded_dataset.iloc[:,2]-70)/30
-        loaded_dataset.iloc[:,4] = (loaded_dataset.iloc[:,4]-30)/30
-        loaded_dataset.iloc[:,5] = (loaded_dataset.iloc[:,5]-30)/20
-        loaded_dataset = loaded_dataset.to_numpy()[:,1:]
-        return loaded_dataset
+        loaded_user = loaded_dataset.to_numpy()
+        return loaded_user
     
     else:
         exercise_list = np.array(loaded_dataset.columns[1:],dtype = int)
         loaded_dataset = loaded_dataset.to_numpy()[:,1:]
         return exercise_list, loaded_dataset
+
 
 def get_trainset(user_profile, exercise, labeling):
     user_input, item_input, labels = [],[],[]
@@ -29,3 +26,14 @@ def get_trainset(user_profile, exercise, labeling):
             labels.append(labeling[i,j])
     
     return np.array(user_input), np.array(item_input), np.array(labels)
+
+
+def scaler_user(user_dataset):
+    
+    user_dataset = user_dataset[:,1:].astype(np.float64)
+    user_dataset[:,0] = (user_dataset[:,0]-170)/30
+    user_dataset[:,1] = (user_dataset[:,1]-70)/30
+    user_dataset[:,3] = (user_dataset[:,3]-30)/30
+    user_dataset[:,4] = (user_dataset[:,4]-25)/25
+
+    return user_dataset

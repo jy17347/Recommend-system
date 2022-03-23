@@ -5,7 +5,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.regularizers import l1, l2
 import argparse
 
-def embedding_model(num_users, num_items, layers=[32,64,32,16], reg_layers=[0]):
+def embedding_model(num_users, num_items, layers=[32,64,32,16,4], reg_layers=[0]):
     
     num_layer = len(layers)
 
