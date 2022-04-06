@@ -1,3 +1,4 @@
+import time
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -6,11 +7,12 @@ from get_dataset import load_dataset
 from get_dataset import get_trainset
 from get_dataset import scaler_user
 from embedding import embedding_model
+from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 
 
-
+created_time = int(time.time()) 
 user_dataset = load_dataset('user')
 chest_list, chest_dataset = load_dataset('chest')
 # lower_list, lower_dataset = load_numpy_dataset('lower')
@@ -27,9 +29,11 @@ model = embedding_model(num_user_dataset,num_chest_dataset)
 model.summary()
 plot_model(model, show_shapes=True)
 
-model.compile(optimizer='adam', loss='mse', metrics=[tf.keras.metrics.Precision()])
+# x_train, x_val, y_train, y_val = train_test_split(user_train_input, chest_train_input, chest_label, test_size=0.1, random_state=2022)
+loss = input("model: ")
+model.compile(optimizer='adam', loss=loss, metrics=[tf.keras.metrics.Precision()])
 history = model.fit([user_train_input, chest_train_input],chest_label, epochs=300)
-model.save('model/chest_model.h5')
+model.save('model/chest_model_{}_{}.h5'.format(loss, created_time))
 
 
 pd.Series(history.history['loss']).plot(logy=True)

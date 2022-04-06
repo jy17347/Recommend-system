@@ -6,10 +6,13 @@ from user_info import input_bodyInfo
 from get_dataset import load_dataset
 from get_dataset import scaler_user
 from tensorflow.keras.models import load_model
-
+model_name = input("model:")
+loss = model_name
 exer_name = pd.read_csv('C:/project/dataset/kwix/curation/exercise_list.csv')
-model = load_model('model/chest_model.h5')
+model = load_model('model/chest_model_{}.h5'.format(loss))
 chest_list, temp = load_dataset('chest')
+
+print(model.layers[5].get_weights)
 
 print(exer_name)
 name = 'ww'
