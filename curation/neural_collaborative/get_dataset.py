@@ -5,7 +5,7 @@ def load_dataset(data):
     dataset_dir = "C:/project/dataset/kwix/curation"
     loaded_dataset = pd.read_csv(dataset_dir +'/' + data + '.csv')
     
-    if data == 'user':
+    if data in ['user', 'test/user']:
         loaded_user = loaded_dataset.to_numpy()
         return loaded_user
     
@@ -34,5 +34,5 @@ def scaler_user(user_dataset):
     user_dataset[:,1] = (user_dataset[:,1]-70)/30
     user_dataset[:,3] = (user_dataset[:,3]-30)/30
     user_dataset[:,4] = (user_dataset[:,4]-25)/25
-
+    user_dataset[:,5] = user_dataset[:,5]/4
     return user_dataset

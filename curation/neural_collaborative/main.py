@@ -9,7 +9,8 @@ from tensorflow.keras.models import load_model
 model_name = input("model:")
 loss = model_name
 exer_name = pd.read_csv('C:/project/dataset/kwix/curation/exercise_list.csv')
-model = load_model('model/chest_model_{}.h5'.format(loss))
+# model = load_model(f'model/chest_model_{loss}.h5')
+model = load_model(f'model/binary_crossentropy_1649318650/chest_model.h5') 
 chest_list, temp = load_dataset('chest')
 
 print(model.layers[5].get_weights)
@@ -35,7 +36,7 @@ for i in range(len(chest_list)):
     recommend_probability.append(recommend_predict[0,0])
 a=np.array(recommend_probability).argsort()
 print(a)
-
+print()
 topK = 4
 reco_topK = []
 for i in range(topK):
