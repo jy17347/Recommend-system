@@ -25,5 +25,6 @@ def input_bodyInfo():
     sex_str = input("성별 (남, 여): ")
     sex = 1 if sex_str == "남" or 1 else 0
     age = int(input("나이: "))
+    ability = int(input("능력: "))
     
-    return name, height, weight, sex, age
+    return name, height, weight, sex, age, ability

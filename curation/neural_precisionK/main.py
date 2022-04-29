@@ -16,13 +16,16 @@ chest_list, temp = load_dataset('chest')
 print(model.layers[5].get_weights)
 
 print(exer_name)
-name = 'ww'
-weight = 78
-height = 180
-sex = 1
-age = 26
-ability = 4
-# name, height, weight, sex, age = input_bodyInfo
+
+# name = 'ww'
+# weight = 78
+# height = 180
+# sex = 1
+# age = 26
+# ability = 4
+
+name, height, weight, sex, age, ability = input_bodyInfo()
+
 newbie = person(name, height, weight, sex, age, ability)
 newbie.check()
 print(newbie.profile())
