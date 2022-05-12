@@ -1,15 +1,18 @@
 body {
-    margin:10px;
+    margin:30px 0px;
+    font-size: 30px;
 }
 a{
-    display:block;
+    display: block;
     text-decoration:none;
     color:rgb(0, 0, 0);
+    
 }
-#wrap {
-     margin:0 auto; color: #FFF; text-align: center;
-     list-style: none; 
-     width:98%;
+#home {
+    font-family: 'Nanum Gothic', sans-serif;
+    margin:0 auto; color: #FFF; text-align: center;
+    list-style: none; 
+    width:98%;
 }
 header{
     justify-content: space-between;
@@ -19,43 +22,70 @@ header{
     line-height:100px;
     padding-left:0;
     margin: 12px 0px;
+    border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
 }
 header li{
-    
     text-align:center;
     width: 100%;
+    font-weight : bold;
+    
 }
+
 nav {
     height:40%;
     line-height:400px;
-    background-color: rgb(211, 254, 255);
-    margin:20px 0px;
+    background-color: rgb(117, 117, 117);
+    margin:25px 0px;
+    border-radius: 40px 40px 40px 40px/40px 40px 40px 40px;
 }
 
 aside{
-    width:49%;
+    width:48%;
     height:300px;
-    line-height:300px;
-    background-color: rgb(182, 210, 255); float:left;
+    background-color: rgb(202, 202, 202); float:left;
     margin: 0px 0px;
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
+    text-align: center;
+    line-height: 300px;
+}
+aside img{
+    height : 250px;
+    fill:rgb(255, 255, 255);
 }
 section{
-    width:49%;
+    width:48%;
     height:300px;
     line-height:300px;
-    background-color: rgb(200, 255, 239); float:right;
+    background-color: rgb(175, 175, 175); float:right;
     margin: 0px 0px;
+    border-radius: 50px 50px 50px 50px/ 50px 50px 50px 50px;
 }
 
 footer{
     height:100px;
     line-height:100px;
-    background-color: rgb(255, 214, 214); clear:both;
-    margin: 340px 0px;
+    background-color: rgb(160, 160, 160); clear:both;
+    margin: 350px 0px;
+    border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
 }
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
 
 @media screen and (min-width:960px){
     #wrap{
         width:960px
     }
+}
+#notice {
+    font-family: 'Nanum Gothic', sans-serif;
+    margin:0 auto; color: #FFF; text-align: center;
+    list-style: none; 
+    width:98%;
 }
