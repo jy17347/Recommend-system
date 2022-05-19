@@ -10,9 +10,8 @@ model_name = input("model:")
 loss = model_name
 exer_name = pd.read_csv('C:/project/dataset/kwix/curation/exercise_list.csv')
 # model = load_model(f'model/chest_model_{loss}.h5')
-model = load_model(f'model/binary_crossentropy_1649385222/chest_model.h5') 
+model = load_model(f'model/binary_crossentropy_1652078095/chest_model.h5') 
 chest_list, temp = load_dataset('chest')
-
 print(model.layers[5].get_weights)
 
 print(exer_name)
@@ -33,4 +32,5 @@ newbie_input = scaler_user(newbie.profile())
 print((newbie_input))
 
 recommend_predict = model.predict([newbie_input, np.array([chest_list])])
-print(np.around(recommend_predict.flatten(),3))
+print(recommend_predict)
+# print(np.around(recommend_predict.flatten(),3))
