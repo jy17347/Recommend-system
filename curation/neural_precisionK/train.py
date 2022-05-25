@@ -33,7 +33,7 @@ x_train, x_val, y_train, y_val, label_train, label_val = train_test_split(user_t
 loss = 'binary_crossentropy'
 print(np.shape(user_train_input), np.shape(chest_train_input), np.shape(chest_label))
 model.compile(optimizer='adam', loss=loss, metrics=[tf.keras.metrics.Precision(),tf.keras.metrics.AUC()])
-history = model.fit([x_train, y_train], label_train, epochs=50, validation_data=([x_val, y_val], label_val))
+history = model.fit([x_train, y_train], label_train, epochs=50, batch_size = 10000, validation_data=([x_val, y_val], label_val))
 
 os.mkdir(f"model/{loss}_{created_time}")
 model.save(f'model/{loss}_{created_time}/chest_model.h5')

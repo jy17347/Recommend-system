@@ -28,11 +28,11 @@ def get_trainset(user_profile, exercise, labeling):
 
 def scaler_user(user_dataset):
 
-    user_dataset = user_dataset[:,1:].astype(np.float64)
+    user_dataset = user_dataset[:,1:7].astype(np.float64)
     user_dataset[:,0] = (user_dataset[:,0]-170)/30
     user_dataset[:,1] = (user_dataset[:,1]-70)/30
     user_dataset[:,2] = (user_dataset[:,2])/2
     user_dataset[:,3] = (user_dataset[:,3]-30)/30
     user_dataset[:,4] = (user_dataset[:,4]-25)/25
-    user_dataset[:,5] = user_dataset[:,5]/4
+    user_dataset[:,5] = user_dataset[:,5]/3
     return user_dataset
