@@ -8,8 +8,8 @@ def embedding_model(num_users, num_items, layers=[16,32,64,32,16,8]):
     
     num_layer = len(layers)
 
-    MF_embedding_item = Embedding(input_dim = num_items+1, output_dim = 6)
-    MLP_embedding_item = Embedding(input_dim = num_items+1, output_dim = 6) 
+    MF_embedding_item = Embedding(input_dim = num_items+1, output_dim = num_users)
+    MLP_embedding_item = Embedding(input_dim = num_items+1, output_dim = num_users) 
     
     user_input = Input(shape = (num_users,), dtype='float32', name='user_unput')
     item_input = Input(shape = (num_items,), dtype='int32', name='item_input')

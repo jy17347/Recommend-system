@@ -10,33 +10,34 @@ from embedding import embedding_model
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import plot_model
 import sklearn
+from db import get_user
 
 
 created_time = int(time.time()) 
-user_dataset = load_dataset('user')
-chest_list, chest_dataset = load_dataset('chest')
-# lower_list, lower_dataset = load_numpy_dataset('lower')
-# abdominals_list, abdominals_dataset = load_numpy_dataset('abdominals')
-user_dataset = scaler_user(user_dataset)
+user_dataset = get_user()
+exercise_list, exercise_dataset = load_dataset('exercise')
 
-num_chest_dataset = len(chest_dataset[0])
+user_dataset = scaler_user(user_dataset)
+print(user_dataset)
+num_exercise_dataset = len(exercise_dataset[0])
 num_user_dataset = len(user_dataset[0])
 
-user_train_input, chest_train_input, chest_label = get_trainset(user_dataset, chest_list, chest_dataset)
-print(np.shape(user_train_input),np.shape(chest_train_input),chest_label)
+user_train_input, exercise_train_input, exercise_label = get_trainset(user_dataset, exercise_list, exercise_dataset)
+print(np.shape(user_train_input),np.shape(exercise_train_input),exercise_label)
 
-model = embedding_model(num_user_dataset,num_chest_dataset)
+
+model = embedding_model(num_user_dataset,num_exercise_dataset)
 model.summary()
 plot_model(model, show_shapes=True)
 
-x_train, x_val, y_train, y_val, label_train, label_val = train_test_split(user_train_input, chest_train_input, chest_label, test_size=0.1, random_state=2022)
+x_train, x_val, y_train, y_val, label_train, label_val = train_test_split(user_train_input, exercise_train_input, exercise_label, test_size=0.1, random_state=2022)
 loss = 'binary_crossentropy'
-print(np.shape(user_train_input), np.shape(chest_train_input), np.shape(chest_label))
-model.compile(optimizer='adam', loss=loss, metrics=[tf.keras.metrics.Precision(),tf.keras.metrics.AUC()])
+print(np.shape(user_train_input), np.shape(exercise_train_input), np.shape(exercise_label))
+model.compile(optimizer='adam', loss=loss, metrics=[tf.keras.metrics.Precision(top_k = 4),tf.keras.metrics.AUC()])
 history = model.fit([x_train, y_train], label_train, epochs=50, batch_size = 10000, validation_data=([x_val, y_val], label_val))
 
 os.mkdir(f"model/{loss}_{created_time}")
-model.save(f'model/{loss}_{created_time}/chest_model.h5')
+model.save(f'model/{loss}_{created_time}/exercise_model.h5')
 
 
 pd.Series(history.history['loss']).plot(logy=True)
