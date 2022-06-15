@@ -11,7 +11,7 @@ def embedding_model(num_users, num_items, layers=[16,32,64,32,16,8]):
     MF_embedding_item = Embedding(input_dim = num_items+1, output_dim = 6)
     MLP_embedding_item = Embedding(input_dim = num_items+1, output_dim = 6) 
     
-    user_input = Input(shape = (num_users,), dtype='float32', name='user_unput')
+    user_input = Input(shape = (num_users,), dtype='float32', name='user_input')
     item_input = Input(shape = (num_items,), dtype='int32', name='item_input')
     
     

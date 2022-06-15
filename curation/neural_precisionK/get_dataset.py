@@ -6,7 +6,7 @@ def load_dataset(data):
     dataset_dir = "C:/project/kwix/curation/dataset"
     loaded_dataset = pd.read_csv(dataset_dir +'/' + data + '.csv')
     
-    if data in ['user', 'test/user']:
+    if data in ['user', 'test_user']:
         loaded_user = loaded_dataset.to_numpy()
         return loaded_user
     
@@ -17,16 +17,9 @@ def load_dataset(data):
 
 
 def load_list(data):
-    loaded_data = pd.read_csv("C:/project/kwix/curation/dataset/exercise_list.csv").to_numpy()
-    if data == 'chest':
-        exercise_list = loaded_data[0,1:]
-    elif data == 'abdominal':
-        exercise_list = loaded_data[1,1:]
-    elif data == 'lower':
-        exercise_list = loaded_data[2,1:]
-    else:
-        exercise_list = None
-    return exercise_list
+    loaded_data = pd.read_csv("C:/project/kwix/curation/dataset/exercise_list.csv").to_numpy()[3,1:]
+
+    return loaded_data
 
 
 def get_trainset(user_profile, exercise, labeling):
