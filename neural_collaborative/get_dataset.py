@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def load_dataset(data):
-    dataset_dir = "C:/project/kwix/curation/dataset"
+    dataset_dir = "../dataset"
     loaded_dataset = pd.read_csv(dataset_dir +'/' + data + '.csv')
     
     if data in ['user', 'test_user']:
