@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import Lambda, Embedding, Flatten, Multiply, RepeatVector, concatenate, Dense, Input
+from tensorflow.keras.layers import Lambda, Embedding, Flatten, Multiply, RepeatVector, concatenate, Dense, Input, Dropout
 from tensorflow.keras.models import Model
 from tensorflow.keras.utils import plot_model
 
@@ -14,11 +14,11 @@ def embedding_model(layers=[32,64,32,8]):
     MF_embedding_body = Embedding(input_dim = 8, output_dim = 2)
     MLP_embedding_body = Embedding(input_dim = 8, output_dim = 2)
 
-    MF_embedding_cat = Embedding(input_dim = 63, output_dim = 4)
-    MLP_embedding_cat = Embedding(input_dim = 63, output_dim = 4)
+    MF_embedding_cat = Embedding(input_dim = 69, output_dim = 4)
+    MLP_embedding_cat = Embedding(input_dim = 69, output_dim = 4)
 
-    MF_embedding_id = Embedding(input_dim = 2966088, output_dim = 4)
-    MLP_embedding_id = Embedding(input_dim = 2966088, output_dim = 4)
+    MF_embedding_id = Embedding(input_dim = 6000, output_dim = 4)
+    MLP_embedding_id = Embedding(input_dim = 6000, output_dim = 4)
     
     user_input = Input(shape = (5,), dtype='float32', name='user_input')
     rent_embedding_input = Input(shape = (1,), dtype='float32', name='rent_input')
@@ -61,12 +61,12 @@ def embedding_model(layers=[32,64,32,8]):
     mlp_vector = concatenate([mlp_user_latent, mlp_item_latent])
 
     for idx in range(0, num_layer):
-        layer = Dense(layers[idx], activation='relu', name="layer%d" %idx)
-        mlp_vector = layer(mlp_vector)
+        mlp_vector = Dense(layers[idx], activation='relu', name="layer%d" %idx)(mlp_vector)
+        mlp_vector = Dropout(0.2)(mlp_vector)
     
 
     predict_vector = concatenate([mf_vector, mlp_vector])
-    prediction = Dense(1, activation='sigmoid', name='prediction')(predict_vector)
+    prediction = Dense(3, activation='softmax', name='prediction')(predict_vector)
     model = Model(inputs=[user_input, rent_embedding_input, body_embedding_input, id_embedding_input, cat_embedding_input, item_input], outputs=prediction)
     
     return model
