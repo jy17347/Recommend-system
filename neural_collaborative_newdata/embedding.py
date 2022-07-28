@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import Embedding, Flatten, Multiply, concatenate, Dense, Input
+from tensorflow.keras.layers import Embedding, Flatten, Multiply, concatenate, Dense, Input, Dropout
 from tensorflow.keras.models import Model
 
 def embedding_model(num_users, num_items, layers=[32,64,32,16,8,4]):
@@ -27,8 +27,9 @@ def embedding_model(num_users, num_items, layers=[32,64,32,16,8,4]):
     mlp_vector = concatenate([mlp_user_latent,mlp_item_latent],axis = 1)
 
     for idx in range(0, num_layer):
-        layer = Dense(layers[idx], activation='relu', name="layer%d" %idx)
-        mlp_vector = layer(mlp_vector)
+        mlp_vector = Dense(layers[idx], activation='relu', name="layer%d" %idx)(mlp_vector)
+        mlp_vector = Dropout(0.2)(mlp_vector)
+        
     
 
     predict_vector = concatenate([(mf_vector), mlp_vector])
