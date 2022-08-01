@@ -1,8 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import Lambda, Embedding, Flatten, Multiply, RepeatVector, concatenate, Dense, Input, Dropout
+from tensorflow.keras.layers import Embedding, Flatten, Multiply, concatenate, Dense, Input, Dropout
 from tensorflow.keras.models import Model
-from tensorflow.keras.utils import plot_model
 
 def embedding_model(layers=[32,64,32,8]):
     
