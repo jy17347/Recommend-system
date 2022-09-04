@@ -6,7 +6,7 @@ from tensorflow.keras.models import Model
 def embedding_model(num_users, num_items, layers=[]):
     
 
-    MF_embedding_user = Embedding(input_dim = 14000, output_dim = 8)
+    MF_embedding_user = Embedding(input_dim = 100010, output_dim = 8)
     MF_embedding_item = Embedding(input_dim = 16, output_dim = 8)
 
     
