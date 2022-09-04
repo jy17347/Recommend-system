@@ -3,7 +3,7 @@ import tensorflow as tf
 from tensorflow.keras.layers import Embedding, Flatten, Multiply, concatenate, Dense, Input, Dropout
 from tensorflow.keras.models import Model
 
-def embedding_model(num_users, num_items, layers=[32,64,32,16,8,4]):
+def embedding_model(num_users, num_items, layers=[32,64,32]):
     
     num_layer = len(layers)
 
